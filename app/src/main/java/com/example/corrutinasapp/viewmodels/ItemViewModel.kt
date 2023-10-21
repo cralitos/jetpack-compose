@@ -9,11 +9,16 @@ import androidx.lifecycle.viewModelScope
 import com.example.corrutinasapp.models.ItemModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 class ItemViewModel: ViewModel() {
+    //flow - reactivo
+    private val _lista : MutableStateFlow<List<ItemModel>> = MutableStateFlow(emptyList())
+    val lista = _lista
+
     var itemList = mutableStateListOf(ItemModel())
         private set
 
@@ -52,5 +57,6 @@ class ItemViewModel: ViewModel() {
                 )
         }
         itemList.addAll(result)
+        _lista.value = result
     }
 }

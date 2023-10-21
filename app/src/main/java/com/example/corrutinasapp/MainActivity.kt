@@ -17,6 +17,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -82,7 +83,8 @@ fun BotonColor() {
 
 @Composable
 fun itemsView(viewModel: ItemViewModel){
-    val itemList=viewModel.itemList
+//    se invoca al viewModel usando el by
+    val itemList by viewModel.lista.collectAsState()
     //invocar procesos en corrutina al lanzar la aplicacion
     LaunchedEffect(Unit){
         viewModel.procesarCorrutina()
