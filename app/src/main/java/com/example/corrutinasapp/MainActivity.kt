@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -48,7 +49,11 @@ fun Content(viewModel: MainViewModel) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         BotonColor()
-        Text(text = viewModel.resultState)
+        if(viewModel.isLoading){
+            CircularProgressIndicator()
+        }else{
+            Text(text = viewModel.resultState)
+        }
         Button(onClick = { viewModel.procesarCorrutina() }) {
             Text(text = "Proceso")
         }
