@@ -49,7 +49,7 @@ fun Content(viewModel: MainViewModel) {
     ) {
         BotonColor()
         Text(text = viewModel.resultState)
-        Button(onClick = { viewModel.procesar() }) {
+        Button(onClick = { viewModel.procesarCorrutina() }) {
             Text(text = "Proceso")
         }
     }
