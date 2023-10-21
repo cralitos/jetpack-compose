@@ -19,6 +19,7 @@ class MainViewModel: ViewModel() {
     var isLoading by mutableStateOf(false)
         private set
 
+
     fun procesarCorrutina(){
         viewModelScope.launch {
             try{
